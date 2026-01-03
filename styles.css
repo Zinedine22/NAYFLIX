@@ -222,15 +222,15 @@ body {
 
 .hero-rating {
     position: absolute;
-    right: 50px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 40px;
+    right: 20px;
+    top: 20px;
+    transform: none;
+    font-size: 18px;
     font-weight: 700;
     color: rgba(255, 255, 255, 0.9);
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-    border: 3px solid rgba(255, 255, 255, 0.5);
-    padding: 16px 24px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    padding: 8px 12px;
     border-radius: 4px;
     z-index: 3;
     animation: slideUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
@@ -314,6 +314,43 @@ body {
     margin-top: 40px;
 }
 
+.add-film-button-wrapper {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+#storageInfo {
+    transition: all 0.3s ease;
+}
+
+#storageInfo:hover {
+    background: rgba(229,9,20,0.15) !important;
+    transform: scale(1.02);
+}
+
+.btn-add-film {
+    font-size: 18px !important;
+    padding: 16px 48px !important;
+    background-color: #E50914 !important;
+    border: 2px solid #E50914;
+    color: #ffffff;
+    font-weight: 700 !important;
+    letter-spacing: 1px;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 8px 24px rgba(229, 9, 20, 0.3);
+    text-transform: uppercase;
+}
+
+.btn-add-film:hover {
+    background-color: #ff1a1a !important;
+    box-shadow: 0 12px 32px rgba(229, 9, 20, 0.5);
+    transform: translateY(-3px);
+}
+
+.btn-add-film:active {
+    transform: translateY(-1px);
+}
+
 .upload-section h2 {
     font-size: 32px;
     margin-bottom: 40px;
@@ -325,7 +362,7 @@ body {
     padding: 40px;
     border-radius: 6px;
     box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
-    animation: slideUp 0.8s ease;
+    animation: slideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .form-row {
@@ -528,8 +565,12 @@ body {
     width: 100%;
     height: 270px;
     object-fit: cover;
-    background-color: #222;
+    background: linear-gradient(135deg, #222 0%, #333 100%);
     display: block;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid rgba(229, 9, 20, 0.1);
 }
 
 .film-card-overlay {
@@ -600,6 +641,83 @@ body {
     background-color: #f40612;
 }
 
+/* Password Modal */
+.password-modal {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-y: auto;
+    animation: fadeIn 0.3s ease;
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+}
+
+.password-modal.show {
+    display: flex;
+}
+
+.password-modal-content {
+    background: linear-gradient(135deg, #1a1a1a 0%, #262626 100%);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(229, 9, 20, 0.2);
+    width: 90%;
+    max-width: 400px;
+    border: 2px solid rgba(229, 9, 20, 0.5);
+    animation: slideDown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.password-modal-content h2 {
+    color: #E50914;
+    font-size: 24px;
+    margin-bottom: 24px;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.password-input {
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 24px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.password-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.password-input:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: #E50914;
+    box-shadow: 0 0 10px rgba(229, 9, 20, 0.3);
+}
+
+.password-modal-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.password-modal-buttons .btn {
+    flex: 1;
+    padding: 12px 24px;
+    font-size: 14px;
+}
+
 /* Modal */
 .modal {
     display: none;
@@ -624,7 +742,7 @@ body {
     border-radius: 6px;
     overflow: hidden;
     box-shadow: 0 24px 80px rgba(0, 0, 0, 0.9);
-    animation: slideUp 0.4s ease;
+    animation: slideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .close {
@@ -1158,11 +1276,6 @@ body {
     filter: brightness(1.1);
 }
 
-.profile-card.restricted:hover {
-    transform: scale(1.05);
-    filter: brightness(0.9);
-}
-
 .profile-image-wrapper {
     position: relative;
     width: 200px;
@@ -1187,38 +1300,11 @@ body {
     display: none;
 }
 
-.upload-label {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: #ffffff;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-size: 12px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    cursor: pointer;
-    white-space: nowrap;
-}
-
-.profile-image-wrapper:hover .upload-label {
-    opacity: 1;
-}
-
 .profile-name {
     font-size: 24px;
     color: #ffffff;
     margin-bottom: 10px;
     font-weight: 600;
-}
-
-.profile-restriction {
-    font-size: 12px;
-    color: #ff6b6b;
-    margin: 0;
-    max-width: 220px;
 }
 
 /* Restricted Modal */
@@ -1276,6 +1362,287 @@ body {
     pointer-events: none;
 }
 
+/* Manage Account Modal */
+.manage-account-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 3500;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.manage-account-modal.show {
+    display: flex;
+}
+
+.manage-account-content {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    border-radius: 16px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border: 2px solid rgba(229, 9, 20, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(229, 9, 20, 0.2);
+    animation: slideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.manage-account-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    border-bottom: 2px solid rgba(229, 9, 20, 0.3);
+}
+
+.manage-account-header h2 {
+    color: #E50914;
+    font-size: 24px;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.close-manage-btn {
+    background: rgba(229, 9, 20, 0.2);
+    border: none;
+    color: #E50914;
+    font-size: 32px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-manage-btn:hover {
+    background: rgba(229, 9, 20, 0.4);
+    transform: rotate(90deg);
+}
+
+.manage-account-body {
+    padding: 30px;
+}
+
+.account-section {
+    margin-bottom: 28px;
+}
+
+.account-section h3 {
+    color: #E50914;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.account-hint {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.profile-image-edit-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.manage-profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 3px solid rgba(229, 9, 20, 0.5);
+    transition: all 0.3s ease;
+}
+
+.manage-profile-image:hover {
+    border-color: #E50914;
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.3);
+}
+
+.btn-change-image {
+    background-color: rgba(229, 9, 20, 0.2);
+    border: 2px solid rgba(229, 9, 20, 0.5);
+    color: #E50914;
+    padding: 10px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+.btn-change-image:hover {
+    background-color: rgba(229, 9, 20, 0.4);
+    border-color: #E50914;
+}
+
+.account-input {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.account-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.account-input:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.12);
+    border-color: #E50914;
+    box-shadow: 0 0 15px rgba(229, 9, 20, 0.2);
+}
+
+.manage-account-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid rgba(229, 9, 20, 0.2);
+}
+
+.manage-account-buttons .btn {
+    flex: 1;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Password Wrong Modal (TETOT! SALAH) */
+.password-wrong-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 4000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.password-wrong-modal.show {
+    display: flex;
+}
+
+.password-wrong-content {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    border-radius: 16px;
+    padding: 40px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    border: 2px solid #E50914;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 50px rgba(229, 9, 20, 0.3);
+    animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.password-wrong-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+    animation: shake 0.5s ease-in-out;
+}
+
+.password-wrong-content h2 {
+    color: #E50914;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(229, 9, 20, 0.4);
+}
+
+.password-wrong-content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+.password-wrong-content .btn {
+    margin-top: 24px;
+    width: 100%;
+    padding: 12px 32px;
+}
+
+/* Manage Account Button on Profile Card */
+.btn-manage-account {
+    background-color: rgba(229, 9, 20, 0.3);
+    border: 2px solid rgba(229, 9, 20, 0.5);
+    color: #E50914;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.btn-manage-account:hover {
+    background-color: rgba(229, 9, 20, 0.5);
+    border-color: #E50914;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3);
+}
+
+.btn-manage-account:active {
+    transform: translateY(0);
+}
+
+/* Additional Animations */
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(50px);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-10px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(10px);
+    }
+}
+
 /* Responsive Profile Screen */
 @media (max-width: 1024px) {
     .profile-title {
@@ -1295,6 +1662,14 @@ body {
     .profile-name {
         font-size: 18px;
     }
+    
+    .manage-account-content {
+        max-width: 450px;
+    }
+    
+    .password-wrong-content {
+        max-width: 380px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1313,6 +1688,8 @@ body {
 
     .profiles-grid {
         gap: 30px;
+        flex-direction: column;
+        align-items: center;
     }
 
     .profile-image-wrapper {
@@ -1333,6 +1710,42 @@ body {
     }
 
     .restricted-content p {
+        font-size: 14px;
+    }
+    
+    .manage-account-content {
+        width: 95%;
+        max-width: 100%;
+        max-height: 85vh;
+    }
+    
+    .manage-account-header {
+        padding: 20px;
+    }
+    
+    .manage-account-header h2 {
+        font-size: 20px;
+    }
+    
+    .manage-account-body {
+        padding: 20px;
+    }
+    
+    .password-wrong-content {
+        width: 95%;
+        max-width: 100%;
+        padding: 30px 20px;
+    }
+    
+    .password-wrong-icon {
+        font-size: 60px;
+    }
+    
+    .password-wrong-content h2 {
+        font-size: 24px;
+    }
+    
+    .password-wrong-content p {
         font-size: 14px;
     }
 }
