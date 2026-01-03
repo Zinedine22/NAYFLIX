@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NAYFLIX - Platform Streaming Film Pribadi</title>
+    <title>OURFLIX - Platform Streaming Film Pribadi</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 111 30'><path d='M105.06696 14.384v-4.3284h4.1572v4.3284h3.205v3.289h-3.205v11.414h-4.1572v-11.414h-2.8254v-3.289zm-14.3395 0c1.6882 0 2.5748 0.8274 2.8932 2.3457h4.3395c-0.4308-3.5821-3.289-6.0115-7.257-6.0115-4.5499 0-8.3554 3.289-8.3554 8.1272 0 5.1005 3.8705 8.1272 8.3554 8.1272 3.9682 0 6.8487-2.4309 7.257-6.0115h-4.3395c-0.3184 1.5181-1.205 2.3457-2.8932 2.3457-2.1962 0-3.8705-1.7351-3.8705-4.4404 0-2.7491 1.6743-4.4404 3.8705-4.4404m-12.7957-0.2154c-0.2294-0.0985-0.4309-0.1541-0.7631-0.1541-1.6743 0-2.9906 1.205-2.9906 2.8932v11.768h4.1572v-11.768c0-1.8324-0.7908-3.0484-1.3905-3.789m-3.2892-5.4181c1.346 0 2.442-1.096 2.442-2.442 0-1.346-1.096-2.442-2.442-2.442-1.346 0-2.442 1.096-2.442 2.442 0 1.346 1.096 2.442 2.442 2.442m2.2011 17.0566h-4.4404v-14.96h4.4404zm-6.842-14.96h-4.1572v14.96h4.1572zm-6.9534 3.6098c-0.1956-0.3184-0.8929-1.0205-2.4309-1.0205-1.8324 0-3.289 1.3905-3.289 4.4404 0 2.8932 1.4462 4.4404 3.289 4.4404 1.5403 0 2.2341-0.7071 2.4309-1.0205v5.9159c0 1.8324-0.7908 2.8932-2.8932 2.8932-2.4309 0-3.205-1.205-3.4244-2.3457h-4.1572c0.2154 2.9906 2.1962 5.3223 7.5815 5.3223 4.7514 0 7.257-2.6517 7.257-7.5815v-14.96h-4.1572zm-10.9346-1.0759c-3.1233 0-5.4181 2.2064-5.4181 5.4859 0 2.8932 1.5959 4.8435 4.4404 5.3392l3.2891 0.5564c1.346 0.2294 1.7351 0.7071 1.7351 1.3905 0 1.096-1.0759 1.6882-2.4309 1.6882-1.6743 0-2.9906-0.8098-3.1902-2.1962h-4.1572c0.2986 3.4244 2.8932 5.5833 7.3661 5.5833 3.6098 0 6.2831-1.8324 6.2831-4.5499 0-2.5748-1.6882-3.8557-4.0659-4.3284l-3.1902-0.5286c-0.9786-0.1818-1.6743-0.5564-1.6743-1.3905 0-0.9786 1.0205-1.5959 2.1962-1.5959 1.4045 0 2.442 0.6932 2.6517 1.8463h4.1572c-0.1956-3.1902-2.8487-5.2132-6.8626-5.2132' fill='%23E50914'/></svg>">
@@ -13,32 +13,86 @@
     <div id="profileScreen" class="profile-screen">
         <div class="profile-container">
             <div class="profile-logo">
-                <span class="logo-text">NAYFLIX</span>
+                <span class="logo-text">OURFLIX</span>
             </div>
-            <h1 class="profile-title">SELAMAT DATANG DI NAYFLIX, SIAPAKAH ANDA?</h1>
+            <h1 class="profile-title">SELAMAT DATANG DI OURFLIX, SIAPAKAH ANDA?</h1>
             
             <div class="profiles-grid">
                 <!-- Profile 1 - Akun Utama -->
-                <div class="profile-card" onclick="selectProfile('profile1', true)">
+                <div class="profile-card" onclick="selectProfileWithPassword('profile1', true)">
                     <div class="profile-image-wrapper">
                         <img id="profile1Image" class="profile-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect fill='%23444' width='200' height='200'/%3E%3Ctext x='100' y='100' font-size='40' fill='%23fff' text-anchor='middle' dominant-baseline='middle'%3E+%3C/text%3E%3C/svg%3E" alt="Profile 1">
                         <input type="file" id="profile1Input" accept="image/*" class="profile-input" onchange="uploadProfileImage(this, 'profile1Image')">
-                        <label for="profile1Input" class="upload-label">Ubah Gambar</label>
                     </div>
                     <p class="profile-name">NAYLA</p>
+                    <button class="btn-manage-account" onclick="event.stopPropagation(); openManageAccountModal('profile1')">MANAGE</button>
                 </div>
 
-                <!-- Profile 2 - Dilarang Ulang Tahun -->
-                <div class="profile-card restricted" onclick="handleProfile2Click(event)">
-                    <div class="profile-image-wrapper" onclick="event.stopPropagation()">
+                <!-- Profile 2 -->
+                <div class="profile-card" onclick="selectProfileWithPassword('profile2', false)">
+                    <div class="profile-image-wrapper">
                         <img id="profile2Image" class="profile-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect fill='%23444' width='200' height='200'/%3E%3Ctext x='100' y='100' font-size='40' fill='%23fff' text-anchor='middle' dominant-baseline='middle'%3E+%3C/text%3E%3C/svg%3E" alt="Profile 2">
                         <input type="file" id="profile2Input" accept="image/*" class="profile-input" onchange="uploadProfileImage(this, 'profile2Image')">
-                        <label for="profile2Input" class="upload-label" onclick="event.stopPropagation()">Ubah Gambar</label>
                     </div>
                     <p class="profile-name">ZIZO</p>
-                    <p class="profile-restriction">⚠️ Tidak boleh dimasuki oleh yang sedang Ulang Tahun</p>
+                    <button class="btn-manage-account" onclick="event.stopPropagation(); openManageAccountModal('profile2')">MANAGE</button>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Manage Account Modal -->
+    <div id="manageAccountModal" class="manage-account-modal">
+        <div class="manage-account-content">
+            <div class="manage-account-header">
+                <h2>MANAGE ACCOUNT</h2>
+                <button class="close-manage-btn" onclick="closeManageAccountModal()">&times;</button>
+            </div>
+            
+            <div class="manage-account-body">
+                <!-- Profile Image Section -->
+                <div class="account-section">
+                    <h3>Profile Picture</h3>
+                    <div class="profile-image-edit-wrapper">
+                        <img id="manageProfileImage" class="manage-profile-image" src="" alt="Profile">
+                        <input type="file" id="manageProfileImageInput" accept="image/*" class="file-input" style="display: none;" onchange="handleManageImageChange(event)">
+                        <button class="btn-change-image" onclick="document.getElementById('manageProfileImageInput').click()">
+                            Ubah Foto
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Profile Name Section -->
+                <div class="account-section">
+                    <h3>Nama Akun</h3>
+                    <input type="text" id="manageProfileName" class="account-input" placeholder="Masukkan nama akun">
+                </div>
+
+                <!-- Password Section -->
+                <div class="account-section">
+                    <h3>Password (Opsional)</h3>
+                    <p class="account-hint">Kosongkan jika tidak ingin mengganti password</p>
+                    <input type="password" id="manageProfilePassword" class="account-input" placeholder="Password baru (opsional)">
+                    <input type="password" id="manageProfilePasswordConfirm" class="account-input" placeholder="Konfirmasi password">
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="manage-account-buttons">
+                    <button class="btn btn-primary" onclick="saveAccountChanges()">Simpan Perubahan</button>
+                    <button class="btn btn-secondary" onclick="closeManageAccountModal()">Batal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Password Wrong Modal (TETOT! SALAH) -->
+    <div id="passwordWrongModal" class="password-wrong-modal">
+        <div class="password-wrong-content">
+            <div class="password-wrong-icon">!</div>
+            <h2>TETOT! SALAH</h2>
+            <p>Password yang Anda masukkan tidak sesuai.</p>
+            <p>Silakan coba lagi.</p>
+            <button class="btn btn-primary" onclick="closePasswordWrongModal()">Coba Lagi</button>
         </div>
     </div>
 
@@ -54,7 +108,7 @@
 
     <!-- Main Application (Hidden by default) -->
     <div id="mainApp" class="main-app" style="display: none;">
-    <!-- Header dengan Logo NAYFLIX -->
+    <!-- Header dengan Logo OURFLIX -->
     <header class="netflix-header">
         <div class="header-top">
             <div class="header-logo">
@@ -102,9 +156,27 @@
         </div>
     </section>
 
+    <!-- Password Modal untuk Tambah Film Baru -->
+    <div id="passwordModal" class="password-modal">
+        <div class="password-modal-content">
+            <h2>MASUKKAN PASSWORD</h2>
+            <input type="password" id="passwordInput" placeholder="Password" class="password-input">
+            <div class="password-modal-buttons">
+                <button onclick="submitPassword()" class="btn btn-primary">Masuk</button>
+                <button onclick="closePasswordModal()" class="btn btn-secondary">Batal</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Upload Section -->
     <section id="manage" class="upload-section">
         <div class="container">
+            <div class="add-film-button-wrapper">
+                <div id="storageInfo" style="background: rgba(229,9,20,0.1); border-left: 4px solid #E50914; padding: 12px 16px; border-radius: 4px; margin-bottom: 20px; font-size: 13px; color: rgba(255,255,255,0.8); text-align: center; cursor: pointer;" onclick="showStorageDetails()">
+                    <strong>Penyimpanan:</strong> <span id="storagePercent">0</span>% digunakan - Klik untuk detail
+                </div>
+                <button class="btn btn-primary btn-add-film" onclick="openPasswordModal()" id="addFilmBtn">TAMBAH FILM BARU</button>
+            </div>
             <h2>Tambah Film Baru</h2>
             <div class="upload-form">
                 <div class="form-row">
@@ -163,6 +235,19 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="shortTrailerVideo">Upload Short Trailer (10 detik) - Ditampilkan sebelum poster</label>
+                    <div class="file-upload-wrapper">
+                        <input type="file" id="shortTrailerVideo" accept="video/*" class="file-input">
+                        <label for="shortTrailerVideo" class="file-upload-label">
+                            <span class="upload-icon">⏱️</span>
+                            <span class="upload-text">Pilih Video Short Trailer</span>
+                            <span class="upload-hint">Format: MP4, WebM. Max: 100MB. Durasi: ~10 detik</span>
+                        </label>
+                    </div>
+                    <div class="preview-video" id="shortTrailerPreview"></div>
+                </div>
+
+                <div class="form-group">
                     <label for="subFilms">Sub-Film / Episode (pisahkan dengan koma)</label>
                     <input type="text" id="subFilms" placeholder="Episode 1, Episode 2, Episode 3">
                 </div>
@@ -216,6 +301,7 @@
     </div>
     </div>
 
+    <script src="db.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
